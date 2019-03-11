@@ -5,11 +5,11 @@ color: #ffffff;
 }
 
 .action-bar {
-background-color: #4e7ac7;
+background-color: #1e68b8;
 }
 
 .page {
-background-color: #fafeff;
+background-color: #1F76D1;
 }
 
 .tab-view {
@@ -18,10 +18,6 @@ tab-background-color: #fafeff;
 
 .list-group, .list-group-item {
 background-color: #fafeff;
-}
-
-.page label, .tab-view label {
-color: #000000;
 }
 
 .segmented-bar {
@@ -228,3 +224,64 @@ background-color: #fafeff;
 color: #000000;
 }
 
+
+.page-content .page-placeholder {
+    color: #D7D7D7;
+    font-size: 20;
+    vertical-align: center;
+    horizontal-align: center;
+}
+.page-content .page-icon {
+    font-size: 72;
+    vertical-align: top;
+    horizontal-align: center;
+    color: #D7D7D7;
+    margin-top: 20%;
+}
+
+.sidedrawer {
+    margin-bottom: -100;
+}
+.sidedrawer-list-item-icon,.sidedrawer-list-item{
+    color: #022734;
+}
+.sidedrawer.sidedrawer-left .sidedrawer-header-image {
+    color: #F8F8F8;
+    height: 60;
+    width: 60;
+    font-size: 60;
+    padding: 0;
+    margin-bottom: 5;
+    margin-top: 20;
+}
+.sidedrawer.sidedrawer-left .footnote {
+    color: rgba(255,255,255,0.5);
+}
+.sidedrawer .sidedrawer-header .sidedrawer-header-brand {
+    color: #fff;
+}
+.sidedrawer .sidedrawer-content{
+    background-color: #fff;
+}
+.sidedrawer .sidedrawer-content .sidedrawer-list-item{
+    padding-left: 15;
+}
+.sidedrawer .sidedrawer-content .sidedrawer-list-item Label {
+    vertical-align: center;
+    color: #022734;
+}
+.sidedrawer .sidedrawer-content .sidedrawer-list-item .fa {
+    width: 20;
+    margin-right: 10;
+}
+.sidedrawer .sidedrawer-content .sidedrawer-list-item.selected {
+    background-color: #F8F8F8;
+}
+
+
+.sidedrawer-header-text {
+    color: white;
+    font-size: 22;
+    font-weight: 800;
+    margin-top: 60;
+}

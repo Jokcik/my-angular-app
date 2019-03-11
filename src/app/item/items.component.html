@@ -10,24 +10,133 @@ So you can still use template expressions, bindings, templates as well as all th
 The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
 http://docs.nativescript.org/ui/action-bar
 -->
+
 <ActionBar title="Delivery Store" class="action-bar">
+    <ActionItem *ngIf="ios">
+        <StackLayout>
+            <Button class="fa menu-item" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Button>
+        </StackLayout>
+    </ActionItem>
+    <StackLayout *ngIf="android" orientation="horizontal" horizontalAlignment="left">
+        <Label class="fa menu-item" text="&#xf0c9;" fontSize="20" (tap)="onDrawerButtonTap()"></Label>
+        <Label verticalAlignment="middle" text="Delivery Store" class="action-label"></Label>
+    </StackLayout>
 </ActionBar>
 
-<!--
-The GridLayout arranges its child elements in a table structure of rows and columns.
-A cell can contain multiple child elements, they can span over multiple rows and columns, 
-and even overlap each other. The GridLayout has one column and one row by default.
-You can learn more about NativeScript layouts at https://docs.nativescript.org/ui/layout-containers.
+<ScrollView>
+    <GridLayout rows="auto, auto, *, auto, auto" class="t1" paddingTop="20">
+        <!--<StackLayout row="0">-->
+            <!--<ScrollView orientation="horizontal">-->
+                <!--<StackLayout orientation="horizontal">-->
+                    <!--<StackLayout margin="10">-->
+                        <!--<StackLayout class="album-image" height="110"-->
+                                     <!--width="125" backgroundImage="~/images/layer4@3x.png"-->
+                                     <!--borderRadius="5">-->
+                            <!--<Button horizontalAlignment="right"-->
+                                    <!--marginRight="5" marginTop="80" width="50"-->
+                                    <!--height="20" class="fa btn-rounded-sm"-->
+                                    <!--text="&#xf005; 4.9" color="#FFFFFF"-->
+                                    <!--backgroundColor="#3b75ff"></Button>-->
+                        <!--</StackLayout>-->
+                        <!--<Label fontSize="14" class="font-weight-bold"-->
+                               <!--color="#000000" text="Havana (Remix)"></Label>-->
+                        <!--<Label fontSize="12" color="#999999" text="2018"></Label>-->
+                    <!--</StackLayout>-->
 
-These components make use of several CSS class names that are part of the NativeScript
-core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
-class names available for styling your app at https://docs.nativescript.org/ui/theme.
--->
-<GridLayout class="page">
-    <ListView [items]="items | async" class="list-group">
-        <ng-template let-item="item">
-            <Label [nsRouterLink]="['/item', item.product.id]" [text]="item.product.title"
-                class="list-group-item"></Label>
-        </ng-template>
-    </ListView>
-</GridLayout>
+                    <!--<StackLayout margin="10">-->
+                        <!--<StackLayout class="album-image" height="110"-->
+                                     <!--width="125" backgroundImage="~/images/layer5@3x.png"-->
+                                     <!--borderRadius="5">-->
+                            <!--<Button horizontalAlignment="right"-->
+                                    <!--marginRight="5" marginTop="80" width="50"-->
+                                    <!--height="20" class="fa btn-rounded-sm"-->
+                                    <!--text="&#xf005; 4.9" color="#FFFFFF"-->
+                                    <!--backgroundColor="#3b75ff"></Button>-->
+                        <!--</StackLayout>-->
+                        <!--<Label fontSize="14" class="font-weight-bold"-->
+                               <!--color="#000000" text="Sweetener"></Label>-->
+                        <!--<Label fontSize="12" color="#999999" text="2018"></Label>-->
+                    <!--</StackLayout>-->
+
+                    <!--<StackLayout margin="10">-->
+                        <!--<StackLayout class="album-image" height="110"-->
+                                     <!--backgroundImage="~/images/layer6@3x.png"-->
+                                     <!--borderRadius="5">-->
+                            <!--<Button horizontalAlignment="right"-->
+                                    <!--marginRight="5" marginTop="80" width="50"-->
+                                    <!--height="20" fontSize="14" class="fa btn-rounded-sm"-->
+                                    <!--text="&#xf005; 4.9" color="#FFFFFF"-->
+                                    <!--backgroundColor="#3b75ff"></Button>-->
+                        <!--</StackLayout>-->
+                        <!--<Label width="125" fontSize="14" class="font-weight-bold"-->
+                               <!--color="#000000" textWrap="true" text="Glory Days: The Platinum Edition"></Label>-->
+                        <!--<Label fontSize="12" color="#999999" text="2018"></Label>-->
+
+                    <!--</StackLayout>-->
+                <!--</StackLayout>-->
+            <!--</ScrollView>-->
+        <!--</StackLayout>-->
+
+        <Label row="1" class="title-item" text="Халява"></Label>
+        <ScrollView row="2" scrollBarIndicatorVisible="false" paddingBottom="100">
+            <GridLayout rows="auto, *" marginTop="20">
+                    <ScrollView row="1" orientation="horizontal" scrollBarIndicatorVisible="false" paddingRight="15">
+                        <StackLayout orientation="horizontal" >
+                            <StackLayout class="header-tiles card" *ngFor="let item of items$ | async">
+                                <Label class="h4 text-center title" horizontalAlignment="center" verticalAlignment="center" [text]="item.product.title"></Label>
+                                <Image height="150" class="img" src="https://delivery-club.store/img/{{ item.product.poster }}"></Image>
+
+                                <FlexboxLayout height="200" flexDirection="column" >
+                                    <HtmlView class="body" [html]="format(item.product.description)"></HtmlView>
+                                    <Label flexGrow="1"></Label>
+                                    <StackLayout class="hr-light"></StackLayout>
+                                    <Button class="btn coupon" textWrap="true" [text]="item.items[0].coupon" (tap)="copy(item)"></Button>
+                                </FlexboxLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+            </GridLayout>
+        </ScrollView>
+        <Label row="3" class="title-item" text="Товары"></Label>
+        <ScrollView row="4" scrollBarIndicatorVisible="false" paddingBottom="100">
+            <GridLayout rows="auto, *" marginTop="20">
+                    <ScrollView row="1" orientation="horizontal" scrollBarIndicatorVisible="false" paddingRight="15">
+                        <StackLayout orientation="horizontal" >
+                            <StackLayout class="header-tiles card" *ngFor="let item of products$ | async">
+                                <Label class="h4 text-center title" horizontalAlignment="center" verticalAlignment="center" [text]="item.title"></Label>
+                                <Image height="150" class="img" src="https://delivery-club.store/img/{{ item.poster }}"></Image>
+
+                                <FlexboxLayout height="300" class="flex-body" flexDirection="column" >
+                                    <!--<Label class="body" textWrap="true" [text]="item.product.description"></Label>-->
+                                    <HtmlView class="body-description" [html]="format(item.description)"></HtmlView>
+                                    <Label flexGrow="1"></Label>
+                                    <!--<Label class="body" textWrap="true" [text]="item.description"></Label>-->
+                                    <StackLayout class="hr-light"></StackLayout>
+
+                                    <Button class="btn btn-red" marginTop="20" textWrap="true" [text]="'КУПИТЬ'" (tap)="buy(item)"></Button>
+                                </FlexboxLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+            </GridLayout>
+        </ScrollView>
+
+    </GridLayout>
+</ScrollView>
+
+<!--<DockLayout class="screen" stretchLastChild="true">-->
+    <!--<ScrollView dock="top">-->
+        <!--<StackLayout orientation="horizontal">-->
+            <!--<GridLayout class="card" height="507" *ngFor="let item of items | async; let idx = index">-->
+                    <!--<Label class="h4 text-center title" [text]="item.product.title"></Label>-->
+                    <!--<Image class="img" src="https://delivery-club.store/img/{{ item.product.poster }}"></Image>-->
+
+                    <!--<HtmlView flexWrapBefore="true" [html]="format(item.product.description)"></HtmlView>-->
+
+                    <!--<Label class="coupon" textWrap="true" [text]="item.items[0].coupon"></Label>-->
+            <!--</GridLayout>-->
+        <!--</StackLayout>-->
+
+    <!--</ScrollView>-->
+<!--</DockLayout>-->
+

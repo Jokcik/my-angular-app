@@ -13,6 +13,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import {NgxsModule} from "@ngxs/store";
 import {ProductsState} from "~/app/shared/store/products.state";
+import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
 
 @NgModule({
     bootstrap: [
@@ -21,8 +22,9 @@ import {ProductsState} from "~/app/shared/store/products.state";
     imports: [
         NativeScriptModule,
         NativeScriptHttpClientModule,
+        NativeScriptUISideDrawerModule,
         AppRoutingModule,
-        NgxsModule.forRoot([ProductsState])
+        NgxsModule.forRoot([ProductsState], { developmentMode: true })
     ],
     declarations: [
         AppComponent,

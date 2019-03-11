@@ -1,2 +1,58 @@
 <!-- https://docs.nativescript.org/angular/core-concepts/angular-navigation.html#page-router-outlet -->
-<page-router-outlet></page-router-outlet>
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+        <StackLayout row="0" class="sidedrawer-header">
+            <Label class="sidedrawer-header-text var" text="Delivery Store"></Label>
+            <!--<Label class="sidedrawer-header-footnote var" text="username@mail.com"></Label>-->
+            <!--<Label fontSize="18px" text="Delivery Store"></Label>-->
+        </StackLayout>
+
+        <ScrollView row="1">
+            <StackLayout class="sidedrawer-content">
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf015;" class="fa"></Label>
+                    <Label col="1" text="Все" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf1ea;" class="fa"></Label>
+                    <Label col="1" text="Халява" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf002;" class="fa"></Label>
+                    <Label col="1" text="Акции" class="p-r-10"></Label>
+                </GridLayout>
+
+                <StackLayout class="hr-light"></StackLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="Delivery club" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="Mvideo" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="Ozon" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="Yandex eda" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="sidedrawer-list-item">
+                    <Label col="0" text="&#xf013;" class="fa"></Label>
+                    <Label col="1" text="Goods" class="p-r-10"></Label>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
+</RadSideDrawer>
